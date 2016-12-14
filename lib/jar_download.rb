@@ -33,6 +33,8 @@ module JarDownload
     result
   end
   
+  # 在 temp 目录中生成临时使用的项目，通过这个项目来下载依赖的 jar
+  # 不过，maven 或者 ant 应该有方式能直接下载 jar 包的
   def command(jar_info = get_jar_info)
     FileUtils.mkdir_p("/tmp/jar_download")
     pwd = FileUtils.pwd
