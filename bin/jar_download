@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require "bundler/setup"
+require 'jar_download'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do |args|
+    if ARGV.empty? || ARGV.length < 3
+      puts 'Usage "jar_download jar_name group_id version"'
+      puts '      "jar_download -h" for more infomation'
+      exit 1
+    end
+    
+    jar_info = {
+      jar_name: ARGV[0],
+      group_id: ARGV[1],
+      version: ARGV[2]
+    }
+    
+    puts jar_info
+    
+    JarDownload.command jar_info
+  end
+
+  # supplemental methods here
+
+  # Declare command-line interface here
+
+  # description "one line description of your app"
+  #
+  # Accept flags via:
+  # on("--flag VAL","Some flag")
+  # options[flag] will contain VAL
+  #
+  # Specify switches via:
+  # on("--[no-]switch","Some switch")
+  #
+  # Or, just call OptionParser methods on opts
+  #
+  # Require an argument
+  # arg :some_arg 
+  #
+  # # Make an argument optional
+  # arg :optional_arg, :optional
+
+  version JarDownload::VERSION
+
+  description 'jar download is used to download jar file from maven repoistroy'
+  
+  # 设置开关选项
+  # arg  :args, :required
+  
+  on("--verbose","Be verbose")
+  
+  use_log_level_option :toggle_debug_on_signal => 'USR1'
+
+  go!
+end
