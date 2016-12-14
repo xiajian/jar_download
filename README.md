@@ -1,8 +1,11 @@
 # JarDownload
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jar_download`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+jar download is used to download jar file from maven repoistroy
+
+想法来源自： http://jingyan.baidu.com/article/22fe7ced3b0a003002617fd1.html。 将其中操作步骤，封装成一个 gem， 自动化处理这一系列的步骤。
+
+NOTE: 依赖系统中需要先安装 maven。
 
 ## Installation
 
@@ -18,11 +21,43 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install jar_download
+    $ gem install jar_download    
 
 ## Usage
 
-TODO: Write usage instructions here
+命令行： 
+
+
+```
+Usage: jar_download jar_name group_id version
+
+jar download is used to download jar file from maven repoistroy
+
+v0.1.0
+
+Options:
+    -h, --help                       Show command line help
+        --version                    Show help/version info
+        --verbose                    Be verbose
+        --log-level LEVEL            Set the logging level
+                                     (debug|info|warn|error|fatal)
+                                     (Default: info)
+                                     
+# 例子使用       
+jar_download  mysql-connector-java mysql 5.1.27                   
+```
+
+编程使用： 
+
+```
+jar_info =     {
+      group_id: 'mysql',
+      jar_name: 'mysql-connector-java',
+      version: '5.1.27'
+    }
+JarDownload.download jar_info
+```                                     
+
 
 ## Development
 
