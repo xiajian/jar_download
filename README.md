@@ -3,7 +3,7 @@
 
 jar download is used to download jar file from maven repoistroy
 
-想法来源自： http://jingyan.baidu.com/article/22fe7ced3b0a003002617fd1.html。 将其中操作步骤，封装成一个 gem， 自动化处理这一系列的步骤。
+想法来源自： http://jingyan.baidu.com/article/22fe7ced3b0a003002617fd1.html , 将其中操作步骤，封装成一个 gem， 自动化处理这一系列的步骤。
 
 NOTE: 依赖系统中需要先安装 maven。
 
