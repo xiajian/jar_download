@@ -67,6 +67,7 @@ yum install maven
 修改 maven 配置，设置成阿里云的源： 
 
 ```
+# CentOS 下
 # vi /etc/maven/settings.xml 找到 mirrors 块，加入如下行
 <mirror>
   <id>alimaven</id>
@@ -74,7 +75,21 @@ yum install maven
   <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
   <mirrorOf>central</mirrorOf>
 </mirror>
+
+# MacOSX 下
+# vi ~/.m2/settings.xml
+<mirror>
+  <id>alimaven</id>
+  <name>aliyun maven</name>
+  <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+  <mirrorOf>central</mirrorOf>
+</mirror>
 ```
+
+## 开发后记
+
+利用 Tempfile 来创建类以及文件，从而实现，跨平台的兼容性。 windows 上还想不太支持。
+
 
 ## Development
 
